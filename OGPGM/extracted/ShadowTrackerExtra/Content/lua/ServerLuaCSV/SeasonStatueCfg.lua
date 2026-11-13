@@ -1,0 +1,15 @@
+BP_ARRAY_SeasonStatueCfg=
+{
+	[1]={ID=1, RegionID=1, SeasonID=1, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[2]={ID=2, RegionID=2, SeasonID=1, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[3]={ID=3, RegionID=3, SeasonID=1, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[4]={ID=4, RegionID=4, SeasonID=1, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[5]={ID=5, RegionID=5, SeasonID=1, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[6]={ID=6, RegionID=6, SeasonID=1, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[7]={ID=7, RegionID=1, SeasonID=2, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[8]={ID=8, RegionID=2, SeasonID=2, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[9]={ID=9, RegionID=3, SeasonID=2, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[10]={ID=10, RegionID=4, SeasonID=2, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[11]={ID=11, RegionID=5, SeasonID=2, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}, 
+	[12]={ID=12, RegionID=6, SeasonID=2, StatueBasePath="/Game/BluePrints/SeasonBP/BP_SeasonStatueBase.BP_SeasonStatueBase_C", StatueBaseMat="/Game/Arts_Scenes/Materials/Objects/M_Team_image_base.M_Team_image_base", AvatarList="1400708;1400078;"}
+}

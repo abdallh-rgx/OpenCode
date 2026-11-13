@@ -1,0 +1,6 @@
+,ID,BtnIcon,BtnDesc,FeatureType,DeadBox,ExpressionID
+1,1,/Game/UMG/Texture/Atlas/Quality/Frames/T_ICON_jizhongtexiao_png.T_ICON_jizhongtexiao_png,击中特效,1,,0
+2,2,/Game/UMG/Texture/Atlas/Quality/Frames/T_ICON_jishatexiao_png.T_ICON_jishatexiao_png,击杀特效,1,,0
+3,3,/Game/UMG/Texture/Atlas/Quality/Frames/T_ICON_bobao_png.T_ICON_bobao_png,击杀播报,2,,0
+4,4,/Game/UMG/Texture/Atlas/Quality/Frames/T_ICON_siwanghezi_png.T_ICON_siwanghezi_png,战利品盒,4,/Game/BluePrints/PickUp/Special/LobbyPlayerDeadBox_M416.LobbyPlayerDeadBox_M416_C,0
+5,5,/Game/UMG/Texture/Atlas/Quality/Frames/T_ICON_xiaolian_png.T_ICON_xiaolian_png,专属表情,3,,12200701
