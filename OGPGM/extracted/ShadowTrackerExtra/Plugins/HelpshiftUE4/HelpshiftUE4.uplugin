@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "HelpshiftUE4",
+	"Description": "HelpshiftUE4",
+	"Category": "Other",
+	"CreatedBy": "GPC",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "HelpshiftUE4",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

@@ -1,0 +1,34 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "AvatarEditor",
+	"Description": "Edit Avartar",
+	"Category": "Editor",
+	"CreatedBy": "garycai",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"Modules": [
+		{
+			"Name": "AvatarEditorPlugin",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
+			"WhitelistPlatforms":
+      [
+          "Win64"
+      ]
+		}
+	],
+    "Plugins": [
+    {
+        "Name": "Wwise",
+        "Enabled": true
+    }
+    ],
+	"EnabledByDefault": false,
+	"IsBetaVersion": true,
+	"CanContainContent": true,
+	"Installed": false
+}

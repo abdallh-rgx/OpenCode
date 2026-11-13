@@ -1,0 +1,258 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{CA3FE935-47A7-A637-C04F-6D91F06BB830}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "ShadowTrackerExtra",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"AIModule",
+				"Engine",
+				"CoreUObject",
+				"PhysXVehicles",
+				"UMG",
+				"Basic"
+			]
+		},
+		{
+			"Name": "SurviveLoadingScreen",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		},
+		{
+			"Name": "UnrealArchExt",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "Basic",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "UAEEditor",
+			"Type": "Developer",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "Client",
+			"Type": "ClientOnly",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ClientNet",
+			"Type": "ClientOnly",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"CoreUObject"
+			]
+		},
+		{
+			"Name": "Server",
+			"Type": "ServerOnly",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "Gameplay",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "GearVR",
+			"Enabled": false
+		},
+		{
+			"Name": "UdpMessaging",
+			"Enabled": false
+		},
+		{
+			"Name": "OculusInput",
+			"Enabled": false
+		},
+		{
+			"Name": "OculusLibrary",
+			"Enabled": false
+		},
+		{
+			"Name": "OculusRift",
+			"Enabled": false
+		},
+		{
+			"Name": "SteamVR",
+			"Enabled": false
+		},
+		{
+			"Name": "Wwise",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioCapture",
+			"Enabled": false
+		},
+		{
+			"Name": "HTTPChunkInstaller",
+			"Enabled": true
+		},
+		{
+			"Name": "OculusVR",
+			"Enabled": false
+		},
+		{
+			"Name": "SubversionSourceControl",
+			"Enabled": false
+		},
+		{
+			"Name": "GitSourceControl",
+			"Enabled": false
+		},
+		{
+			"Name": "CustomMeshComponent",
+			"Enabled": false
+		},
+		{
+			"Name": "LightPropagationVolume",
+			"Enabled": false
+		},
+		{
+			"Name": "CodeLiteSourceCodeAccess",
+			"Enabled": false
+		},
+		{
+			"Name": "KDevelopSourceCodeAccess",
+			"Enabled": false
+		},
+		{
+			"Name": "OnlineSubsystemGooglePlay",
+			"Enabled": false
+		},
+		{
+			"Name": "GoogleCloudMessaging",
+			"Enabled": false
+		},
+		{
+			"Name": "MobilePatchingUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "OMobileFBPL",
+			"Enabled": true
+		},
+		{
+			"Name": "HTML5Networking",
+			"Enabled": false
+		},
+		{
+			"Name": "MobileLauncherProfileWizard",
+			"Enabled": false
+		},
+		{
+			"Name": "AlembicImporter",
+			"Enabled": false
+		},
+		{
+			"Name": "ArchVisCharacter",
+			"Enabled": false
+		},
+		{
+			"Name": "CharacterAI",
+			"Enabled": false
+		},
+		{
+			"Name": "UObjectPlugin",
+			"Enabled": false
+		},
+		{
+			"Name": "FacialAnimation",
+			"Enabled": false
+		},
+		{
+			"Name": "LocationServicesBPLibrary",
+			"Enabled": false
+		},
+		{
+			"Name": "TcpMessaging",
+			"Enabled": false
+		},
+		{
+			"Name": "ScriptGeneratorPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "ScriptPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "GCloudSDK",
+			"Enabled": true
+		},
+		{
+			"Name": "Tss",
+			"Enabled": true
+		},
+		{
+			"Name": "SkillEditor",
+			"Enabled": true
+		},
+		{
+			"Name": "OceanPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "GEM",
+			"Enabled": true
+		},
+		{
+			"Name": "TApm",
+			"Enabled": true,
+			"MarketplaceURL": "http://tapm.wetest.qq.com/"
+		},
+		{
+			"Name": "UAETrigger",
+			"Enabled": true
+		},
+		{
+			"Name": "AppleARKit",
+			"Enabled": false
+		},
+		{
+			"Name": "GuiTest",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetAutoCheckTool",
+			"Enabled": false
+		},
+		{
+			"Name": "GAutomator",
+			"Enabled": true
+		},
+		{
+			"Name": "AvatarEditorPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "UIParticle",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/6739822882cf45e6a06900c58f035059"
+		},
+		{
+			"Name": "AndroidSoMemoryRecord",
+			"Enabled": false
+		},
+		{
+			"Name": "PandoraComponent",
+			"Enabled": true
+		}
+	],
+	"TargetPlatforms": [
+		"WindowsNoEditor",
+		"Android",
+		"IOS",
+		"LinuxNoEditor"
+	]
+}

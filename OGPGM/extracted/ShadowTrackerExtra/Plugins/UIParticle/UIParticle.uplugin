@@ -1,0 +1,40 @@
+{
+	"FileVersion": 3,
+	"Version": 4,
+	"VersionName": "4.0",
+	"FriendlyName": "UIParticle",
+	"Description": "UIParticle",
+	"Category": "Other",
+	"CreatedBy": "RedStarStudio",
+	"CreatedByURL": "",
+	"DocsURL": "https://drive.google.com/open?id=1R40hTRhseBtRewdwjvRpWBwFsq0QdAsG",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/6739822882cf45e6a06900c58f035059",
+	"SupportURL": "",
+	"EngineVersion": "4.18.0",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "UIParticle",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Win32",
+				"Mac",
+				"IOS",
+				"Android"
+			]
+		},
+		{
+			"Name": "UIParticleEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Win32",
+				"Mac"
+			]
+		}
+	]
+}
