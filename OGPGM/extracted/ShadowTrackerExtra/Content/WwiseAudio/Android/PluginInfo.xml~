@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginInfo Project="iGame007" Platform="Android" BasePlatform="Android">
+	<Plugins>
+		<Plugin Name="Resonance Audio Renderer" ID="6557955" DLL="ResonanceAudioFX"/>
+		<Plugin Name="Wwise Parametric EQ" ID="6881283" DLL="ParametricEQ"/>
+		<Plugin Name="Wwise Delay" ID="6946819" DLL="AkDelay"/>
+		<Plugin Name="Wwise Compressor" ID="7077891" DLL="AkCompressor"/>
+		<Plugin Name="Wwise Peak Limiter" ID="7208963" DLL="AkPeakLimiter"/>
+		<Plugin Name="Wwise Matrix Reverb" ID="7536643" DLL="AkMatrixReverb"/>
+		<Plugin Name="Wwise Meter" ID="8454147" DLL="AkSoundEngineDLL"/>
+		<Plugin Name="Wwise DelayWG" ID="65540003" DLL="AkDelayWG"/>
+	</Plugins>
+</PluginInfo>
