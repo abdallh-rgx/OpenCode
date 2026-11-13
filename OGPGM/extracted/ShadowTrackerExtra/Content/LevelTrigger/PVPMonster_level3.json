@@ -1,0 +1,7623 @@
+{
+	"descName": "",
+	"allTriggers": [
+		{
+			"category": "P城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1001",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_Bool",
+							"paramcount": "1",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "IsEqualString",
+									"paramcount": "2",
+									"paramname": "ConditionParam1",
+									"paramaters": [
+										{
+											"type": "EventParam",
+											"value": "EventFunc_TimerEvent_EventTag",
+											"paramcount": "0",
+											"paramname": ""
+										},
+										{
+											"type": "string",
+											"value": "1001",
+											"paramcount": "0",
+											"paramname": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1001",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1001",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1001",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10001",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1001",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1001",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1001",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1001",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1001",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1001",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1002",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1002",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1002",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1002",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1002",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10002",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1002",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1002",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1002",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1002",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1002",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1002",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "废墟",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1003",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1003",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1003",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "废墟",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1003",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1003",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10003",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "废墟",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1003",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1003",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1003",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "废墟",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1003",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1003",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1003",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "Y城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1004",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1004",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1004",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "Y城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1004",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1004",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10004",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "Y城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1004",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1004",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1004",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "Y城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1004",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1004",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1004",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1005",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_Bool",
+							"paramcount": "1",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "IsEqualString",
+									"paramcount": "2",
+									"paramname": "ConditionParam1",
+									"paramaters": [
+										{
+											"type": "EventParam",
+											"value": "EventFunc_TimerEvent_EventTag",
+											"paramcount": "0",
+											"paramname": ""
+										},
+										{
+											"type": "string",
+											"value": "1005",
+											"paramcount": "0",
+											"paramname": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1005",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1005",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1005",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10005",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1005",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1005",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1005",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1005",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1005",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1005",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "R城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1006",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1006",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1006",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "R城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1006",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1006",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10006",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "R城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1006",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1006",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1006",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "R城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1006",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1006",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1006",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "学校",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1007",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1007",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1007",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "学校",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1007",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1007",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10007",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "学校",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1007",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1007",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1007",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "学校",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1007",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1007",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1007",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏以后激活感染区1008",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1008",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": ">",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1008",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区倒计时1008",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1008",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ActiveInfectArea",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1008",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1008",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_InfectedAreaActived"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_AreaId",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1008",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10008",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_InfectedAreaActived_HardLevel",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "白天激活感染区1008",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_OperatorAND",
+					"paramcount": "0",
+					"paramname": "",
+					"sonDatas": [
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_EnterAreaTrigger_Areaid",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "1008",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						},
+						{
+							"type": "condition",
+							"value": "Condition_IntegerCompare",
+							"paramcount": "3",
+							"paramname": "",
+							"paramaters": [
+								{
+									"type": "Func",
+									"value": "GetPVEWeatherStage",
+									"paramcount": "0",
+									"paramname": "ConditionParam1"
+								},
+								{
+									"type": "compareop",
+									"value": "==",
+									"paramcount": "0",
+									"paramname": "Operator"
+								},
+								{
+									"type": "int32",
+									"value": "101",
+									"paramcount": "0",
+									"paramname": "ConditionParam2"
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "20000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1008",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "空投Boss1",
+			"nodeDefaltOpen": "true",
+			"triggerName": "BOSS倒计时1001",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_GameModeStateChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_GameModeStateChange_state",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "FightingState",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "270000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "BossTimer_1001",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "空投Boss1",
+			"nodeDefaltOpen": "true",
+			"triggerName": "BornBoss1",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "string",
+									"value": "BossTimer_1001",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_PVPCallABoss",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "100008",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "0",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						},
+						{
+							"type": "int32",
+							"value": "30",
+							"paramcount": "0",
+							"paramname": "ActionParam3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "空投Boss2",
+			"nodeDefaltOpen": "true",
+			"triggerName": "BOSS倒计时1002",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_GameModeStateChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_GameModeStateChange_state",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "FightingState",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "720000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "BossTimer_1002",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "空投Boss2",
+			"nodeDefaltOpen": "true",
+			"triggerName": "BornBoss2",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "string",
+									"value": "BossTimer_1002",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_PVPCallABoss",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "100008",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "0",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						},
+						{
+							"type": "int32",
+							"value": "30",
+							"paramcount": "0",
+							"paramname": "ActionParam3"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_PVPCallABoss",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "100008",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "0",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						},
+						{
+							"type": "int32",
+							"value": "30",
+							"paramcount": "0",
+							"paramname": "ActionParam3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "空投Boss3",
+			"nodeDefaltOpen": "true",
+			"triggerName": "BOSS倒计时1003",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_GameModeStateChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_GameModeStateChange_state",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "FightingState",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1230000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "BossTimer_1003",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "空投Boss3",
+			"nodeDefaltOpen": "true",
+			"triggerName": "BornBoss3",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "string",
+									"value": "BossTimer_1003",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_PVPCallABoss",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "100008",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "0",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						},
+						{
+							"type": "int32",
+							"value": "30",
+							"paramcount": "0",
+							"paramname": "ActionParam3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "警察局",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活警察局2001",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "2001",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "2000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "20001",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_thisActor",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黄昏102",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏102倒计时",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_PVEWeatherChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_PVEWeatherChange_WeatherPhase",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "102",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "黄昏102倒计时",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黄昏102",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏102刷出搅屎棍",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "黄昏102倒计时",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12111",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黑夜103",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黑夜103第1阶段",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "100",
+			"event": [
+				"EventFunc_PVEWeatherChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_PVEWeatherChange_WeatherPhase",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "103",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12211",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "2",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12212",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "3",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12213",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "4",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12214",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12215",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "90000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "103",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黑夜103",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黑夜103第2阶段",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "100",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "103",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12221",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "2",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12222",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "3",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12223",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "4",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12224",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12225",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "6",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12226",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黄昏202",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏202倒计时",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_PVEWeatherChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_PVEWeatherChange_WeatherPhase",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "202",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "黄昏202倒计时",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黄昏202",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黄昏202刷搅屎棍",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "黄昏202倒计时",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12311",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黑夜203",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黑夜203第1阶段",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_PVEWeatherChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_PVEWeatherChange_WeatherPhase",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "203",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12411",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "2",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12412",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "3",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12413",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "4",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12414",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12415",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "90000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "2031",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "黑夜203",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黑夜203第2阶段",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "2031",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12421",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "2",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12422",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "3",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12423",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "4",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12424",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12425",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				},
+				{
+					"type": "action",
+					"value": "Action_SpawnMonsterOutBossArea",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "6",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "int32",
+							"value": "12426",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "靶场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1009",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1009",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10009",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "靶场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1009",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1009",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1009",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城防空洞",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1010",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1010",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10010",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城防空洞",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1010",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1010",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1010",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城4房野",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1011",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1011",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10011",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城4房野",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1011",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1011",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1011",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城山坡",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1012",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1012",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10012",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "S城山坡",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1012",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1012",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1012",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1013",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1013",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10013",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1013",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1013",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1013",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山山腰",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1014",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1014",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10014",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "圣山山腰",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1014",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1014",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1014",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "养老院上方",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1015",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1015",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10015",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "养老院上方",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1015",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1015",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1015",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "养老院",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1016",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1016",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10016",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "养老院",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1016",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1016",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1016",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "养老院右方",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1017",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1017",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10017",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "养老院右方",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1017",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1017",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1017",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "监狱",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1018",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1018",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10018",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "监狱",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1018",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1018",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1018",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "大仓库",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1019",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1019",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10019",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "大仓库",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1019",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1019",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1019",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "大防空洞",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1020",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1020",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10020",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "大防空洞",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1020",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1020",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1020",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "伐木场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1021",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1021",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10021",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "伐木场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1021",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1021",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1021",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "M城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1022",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1022",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10022",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "M城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1022",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1022",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1022",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1023",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1023",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10023",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1023",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1023",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1023",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场右下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1024",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1024",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10024",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场右下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1024",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1024",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1024",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场左",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1025",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1025",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10025",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "农场左",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1025",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1025",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1025",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城右下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1026",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1026",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10026",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城右下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1026",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1026",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1026",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1027",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1027",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10027",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城下",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1027",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1027",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1027",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "麦田右",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1028",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1028",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10028",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "麦田右",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1028",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1028",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1028",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城左",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1029",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1029",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10029",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城左",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1029",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1029",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1029",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城上",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1030",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1030",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10030",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "P城上",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1030",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1030",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1030",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "水城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1031",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1031",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10031",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "水城",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1031",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1031",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1031",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "R城右",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1032",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1032",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10032",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "R城右",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1032",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1032",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1032",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "学校车库",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1033",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1033",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10033",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "学校车库",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1033",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1033",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1033",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "Y城麦田左",
+			"nodeDefaltOpen": "true",
+			"triggerName": "感染区刷怪1034",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "200",
+			"event": [
+				"EventFunc_TimerEvent"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_Bool",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "Func",
+							"value": "IsEqualString",
+							"paramcount": "2",
+							"paramname": "ConditionParam1",
+							"paramaters": [
+								{
+									"type": "EventParam",
+									"value": "EventFunc_TimerEvent_EventTag",
+									"paramcount": "0",
+									"paramname": ""
+								},
+								{
+									"type": "string",
+									"value": "1034",
+									"paramcount": "0",
+									"paramname": ""
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_EnterLevelAndStartMonsterWave",
+					"paramcount": "4",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1000",
+							"paramcount": "0",
+							"paramname": "ChapterId"
+						},
+						{
+							"type": "int32",
+							"value": "10034",
+							"paramcount": "0",
+							"paramname": "LevelId"
+						},
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0",
+							"paramname": "WaveIndex"
+						},
+						{
+							"type": "Actor",
+							"value": "",
+							"paramcount": "0",
+							"paramname": "ActionParam4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "Y城麦田左",
+			"nodeDefaltOpen": "true",
+			"triggerName": "激活感染区1034",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterAreaTrigger"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterAreaTrigger_Areaid",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "1034",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_CreateTimerEvent",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "5000",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "string",
+							"value": "1034",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "决赛圈僵尸退场",
+			"nodeDefaltOpen": "true",
+			"triggerName": "触发僵尸退场",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_PVEWeatherChange"
+			],
+			"condition": [
+				{
+					"type": "condition",
+					"value": "Condition_IntegerCompare",
+					"paramcount": "3",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_PVEWeatherChange_WeatherPhase",
+							"paramcount": "0",
+							"paramname": "ConditionParam1"
+						},
+						{
+							"type": "compareop",
+							"value": "==",
+							"paramcount": "0",
+							"paramname": "Operator"
+						},
+						{
+							"type": "int32",
+							"value": "301",
+							"paramcount": "0",
+							"paramname": "ConditionParam2"
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_MonsterAutoExit",
+					"paramcount": "0",
+					"paramname": ""
+				}
+			]
+		},
+		{
+			"category": "玩家刷怪点",
+			"nodeDefaltOpen": "true",
+			"triggerName": "增加刷怪点",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_EnterTriggerWithPoints"
+			],
+			"condition": [],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ChangeMonsterSpotByTrigger",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterTriggerWithPoints_ThisActor",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_EnterTriggerWithPoints_OtherActor",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "玩家刷怪点",
+			"nodeDefaltOpen": "true",
+			"triggerName": "清除刷怪点",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_ExitTriggerWithPoints"
+			],
+			"condition": [],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_ExitMonsterSpotByTrigger",
+					"paramcount": "2",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_ExitTriggerWithPoints_ThisActor",
+							"paramcount": "0",
+							"paramname": "ActionParam1"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_ExitTriggerWithPoints_OtherActor",
+							"paramcount": "0",
+							"paramname": "ActionParam2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"category": "狂暴",
+			"nodeDefaltOpen": "true",
+			"triggerName": "黑夜狂暴",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_PVEWeatherChange"
+			],
+			"condition": [],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_AllUnitSetRageLevel",
+					"paramcount": "0",
+					"paramname": ""
+				}
+			]
+		},
+		{
+			"category": "狂暴",
+			"nodeDefaltOpen": "true",
+			"triggerName": "二次狂暴",
+			"actorIterator": "Not Set",
+			"eventDelayTime": "0",
+			"actionDelayTime": "0",
+			"event": [
+				"EventFunc_MonsterBeginPlay"
+			],
+			"condition": [],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_UnitSetRageLevel",
+					"paramcount": "1",
+					"paramname": "",
+					"paramaters": [
+						{
+							"type": "EventParam",
+							"value": "EventFunc_MonsterBeginPlay_Monster",
+							"paramcount": "0",
+							"paramname": "MonsterActor"
+						}
+					]
+				}
+			]
+		}
+	]
+}

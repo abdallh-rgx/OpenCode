@@ -1,0 +1,42 @@
+{
+	"descName": "ZombieEscape",
+	"allTriggers": [
+		{
+			"category": "游戏主线",
+			"triggerName": "刷僵尸",
+			"event": [
+				"EventFunc_PawnGenerate"
+			],
+			"condition": [],
+			"action": [
+				{
+					"type": "action",
+					"value": "Action_SpawnZombie",
+					"paramcount": "4",
+					"paramaters": [
+						{
+							"type": "int32",
+							"value": "1",
+							"paramcount": "0"
+						},
+						{
+							"type": "int32",
+							"value": "2",
+							"paramcount": "0"
+						},
+						{
+							"type": "EventParam",
+							"value": "EventFunc_PawnGenerate_InVec",
+							"paramcount": "0"
+						},
+						{
+							"type": "int32",
+							"value": "4",
+							"paramcount": "0"
+						}
+					]
+				}
+			]
+		}
+	]
+}
