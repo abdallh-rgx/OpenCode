@@ -1,0 +1,46 @@
+ - 39EDE6764D06E5137CED3198856B6609 
+	/Game/UMG/UI_BP/Lobby_Store_Int/Lobby_Store_item_UIBP.Lobby_Store_item_UIBP_C:WidgetTree.TextBlock_24.Text - "30" 
+	/Game/UMG/UI_BP/Lobby_Store_Int/Lobby_Store_itemJK_UIBP.Lobby_Store_itemJK_UIBP_C:WidgetTree.TextBlock_24.Text - "3000点卷" 
+
+ - 4442907D4B988E4CC7E839B1609BDD36 
+	/Game/UMG/UI_BP/Lobby_Store_Int/Lobby_Store_item_UIBP.Lobby_Store_item_UIBP_C:WidgetTree.TextBlock_23.Text - "US$400" 
+	/Game/UMG/UI_BP/Lobby_Store_Int/Lobby_Store_itemJK_UIBP.Lobby_Store_itemJK_UIBP_C:WidgetTree.TextBlock_23.Text - "$400" 
+
+ - DD755DB9449D3A45014B91BE7BA5CDAB 
+	/Game/UMG/UI_BP/Lobby_Store_Int/Lobby_Store_item_UIBP.Lobby_Store_item_UIBP_C:WidgetTree.TextBlock_0.Text - "热卖" 
+	/Game/UMG/UI_BP/Lobby_Store_Int/Lobby_Store_itemJK_UIBP.Lobby_Store_itemJK_UIBP_C:WidgetTree.TextBlock_7.Text - "BONUS" 
+
+ - F7B711514769DE55F9A9A999FCC1CF61 
+	/Game/UMG/UI_BP/PopupNotice/ShareVideo_BP.ShareVideo_BP_C:WidgetTree.TextBlock_WindowsTitle.Text - "分享视频" 
+	/Game/UMG/UI_BP/PopupNotice/GeneralPopupNotice_BP.GeneralPopupNotice_BP_C:WidgetTree.TextBlock_WindowsTitle.Text - "提示" 
+
+ - 56561C8E4B1164C029961A87D4139893 
+	/Game/UMG/UI_BP/PopupNotice/ShareVideo_BP.ShareVideo_BP_C:WidgetTree.TextBlock_Btn01Name.Text - "Facebook" 
+	/Game/UMG/UI_BP/PopupNotice/GeneralPopupNotice_BP.GeneralPopupNotice_BP_C:WidgetTree.TextBlock_Btn01Name.Text - "确定" 
+
+ - D92F658D4FFAD2A3F158349E2A4D338E 
+	/Game/UMG/UI_BP/PopupNotice/ShareVideo_BP.ShareVideo_BP_C:WidgetTree.TextBlock_Btn03Name.Text - "Twitter" 
+	/Game/UMG/UI_BP/PopupNotice/GeneralPopupNotice_BP.GeneralPopupNotice_BP_C:WidgetTree.TextBlock_Btn03Name.Text - "其他" 
+
+ - 8BB57F604D48EED7B5B587994629266A 
+	/Game/UMG/UI_BP/RoleInfo/Lobby_RoleInfo_UIBP.Lobby_RoleInfo_UIBP_C:WidgetTree.EditableTextBox_Signature.HintText - "请输入个性签名 (1-10个字)" 
+	/Game/UMG/UI_BP/RoleInfo/Lobby_RoleInfo_UIBP.Lobby_RoleInfo_UIBP_C:WidgetTree.EditableTextBox_Signature_2.HintText - "请输入个性签名 (30个字)" 
+
+ - EA142BAE4F2A8549F765F2A487D2A7C6 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_0.Text - "关" 
+	/Game/UMG/UI_BP/Room/Item/Room_parameter_ItemUIBP.Room_parameter_ItemUIBP_C:WidgetTree.TextBlock_101.Text - "开" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_11.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_85.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_94.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_29.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_71.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_73.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_151.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_105.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_109.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_114.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_90.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_136.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_146.Text - "关" 
+	/Game/UMG/UI_BP/Setting/Setting_Basic_UIBP.Setting_Basic_UIBP_C:WidgetTree.TextBlock_161.Text - "关" 
+
