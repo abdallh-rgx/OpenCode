@@ -1,4 +1,4 @@
-name: OpenCode Persistent Session (Runtime Token Injection)
+name: OpenCode Persistent Session (Headless + Manual Stop)
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ permissions:
 
 jobs:
   opencode-session:
-    runs-on: macos-latest
-    timeout-minutes: 350
+    runs-on: macos-latest # ARM64 (Apple Silicon)
+    timeout-minutes: 350 # أقل من حد 6 ساعات كشبكة أمان
 
     steps:
       - name: Checkout Repository
@@ -23,10 +23,6 @@ jobs:
           brew install anomalyco/tap/opencode
           brew install cloudflare/cloudflare/cloudflared
 
-      - name: Configure Auto-Approve
-        run: |
-          echo '{"$schema":"https://opencode.ai/config.json","permission":{"external_directory":"allow"}}' > opencode.json
-
       - name: Restore Previous Sessions
         run: |
           if [ -d "opencode_state" ] && [ "$(ls -A opencode_state 2>/dev/null)" ]; then
@@ -35,21 +31,26 @@ jobs:
             done
           fi
 
-      - name: Start OpenCode Web
+      # ---- بدء الخادم بدون واجهة + موافقة تلقائية ----
+      - name: Start OpenCode Headless Server (Auto-Approve)
+        env:
+          # الموافقة التلقائية على جميع الأدوات دون سؤال
+          OPENCODE_PERMISSION: '{"bash":"allow","edit":"allow","read":"allow","glob":"allow","grep":"allow","list":"allow","task":"allow","webfetch":"allow","websearch":"allow","lsp":"allow","skill":"allow"}'
         run: |
-          opencode web --port 4096 --hostname 0.0.0.0 --auto > opencode.log 2>&1 &
+          # serve = خادم HTTP بدون محاولة فتح متصفح (مناسب لـ CI)
+          opencode serve --port 4096 --hostname 0.0.0.0 > opencode.log 2>&1 &
           sleep 10
-          curl -f http://localhost:4096/global/health || (cat opencode.log; exit 1)
+          curl -f http://localhost:4096/global/health || (echo "OpenCode failed"; cat opencode.log; exit 1)
+          echo "✅ OpenCode server is running on port 4096"
 
-      # --- توليد صفحة الإيقاف أثناء التشغيل مع حقن السر ---
-      - name: Generate Stop Page (runtime injection)
+      # ---- توليد صفحة الإيقاف مع حقن التوكن أثناء التشغيل ----
+      - name: Generate Stop Page (Runtime Token Injection)
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
           RUN_ID: ${{ github.run_id }}
         run: |
-          # مجلد خارج المستودع تمامًا
           STOP_DIR="$RUNNER_TEMP/stop_page"
           mkdir -p "$STOP_DIR"
 
@@ -129,27 +130,50 @@ jobs:
           echo "🔴 STOP_URL: $STOP_URL"
           echo "🌐 OPENCODE_URL: $CODE_URL"
 
-      - name: Work Loop
+      # ---- حلقة العمل: تخرج عند الإيقاف اليدوي أو بعد 5 ساعات ----
+      - name: Work Loop (5h max, stops on cancel)
         run: |
           START_TIME=$(date +%s)
           MAX_SECONDS=$((5 * 3600))
+
           while [ $(($(date +%s) - START_TIME)) -lt $MAX_SECONDS ]; do
-            if ! pgrep -f "opencode" > /dev/null; then break; fi
+            if ! pgrep -f "opencode" > /dev/null; then
+              echo "OpenCode stopped."
+              break
+            fi
             sleep 60
           done
+          echo "⏹️ Loop exited. Saving sessions..."
 
-      - name: Save Sessions (never commit stop_page)
+      # ---- حفظ الجلسات في المستودع (يعمل دائمًا حتى عند الإلغاء) ----
+      - name: Save All Sessions
         if: always()
         run: |
           mkdir -p opencode_state
-          # ... كود التصدير كما في السابق ...
+
+          if command -v opencode &> /dev/null; then
+            SESSIONS=$(opencode session list --json 2>/dev/null | grep -o '"id":"[^"]*"' | cut -d'"' -f4 || true)
+            if [ -n "$SESSIONS" ]; then
+              for id in $SESSIONS; do
+                opencode export "$id" --sanitize > "opencode_state/${id}.json" 2>/dev/null || true
+              done
+            fi
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add opencode_state/ opencode.json
-          git diff --cached --quiet || (git commit -m "save sessions [skip ci]" && git push)
+          git add opencode_state/
+          if ! git diff --cached --quiet; then
+            git commit -m "save sessions [skip ci]"
+            git push
+          else
+            echo "No changes to save."
+          fi
 
-      - name: Trigger Next Run
+      # ---- إعادة التشغيل التلقائي (فقط إذا لم يتم الإلغاء يدويًا) ----
+      - name: Trigger Next Run (only if not cancelled)
         if: always() && job.status != 'cancelled'
         run: |
-          gh workflow run "OpenCode Persistent Session (Runtime Token Injection)" \
-            --ref ${{ github.ref }} --repo ${{ github.repository }}
+          gh workflow run "OpenCode Persistent Session (Headless + Manual Stop)" \
+            --ref ${{ github.ref }} \
+            --repo ${{ github.repository }}
