@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   opencode-session:
-    runs-on: macos-14 # ARM64 (Apple Silicon)
+    runs-on: macos-latest # ARM64 (Apple Silicon)
     timeout-minutes: 350 # شبكة أمان (أقل من حد 6 ساعات بقليل)
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
