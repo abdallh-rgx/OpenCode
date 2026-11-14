@@ -9,8 +9,8 @@ permissions:
 
 jobs:
   opencode-session:
-    runs-on: macos-latest # ARM64 (Apple Silicon)
-    timeout-minutes: 350 # شبكة أمان (أقل من حد 6 ساعات بقليل)
+    runs-on: macos-latest
+    timeout-minutes: 350
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
 
@@ -40,27 +40,25 @@ jobs:
             done
           fi
 
-      # --- التعديل الرئيسي: تشغيل الخادم على مجلد OGPGM مباشرة ---
+      # --- التعديل: استخدام cd للانتقال إلى مجلد OGPGM ---
       - name: Start OpenCode Headless Server (OGPGM Project)
         env:
           OPENCODE_PERMISSION: '{"bash":"allow","edit":"allow","read":"allow","glob":"allow","grep":"allow","list":"allow","task":"allow","webfetch":"allow","websearch":"allow","lsp":"allow","skill":"allow","external_directory":"allow"}'
         run: |
-          # تحديد مسار المشروع الفرعي
           PROJECT_DIR="$GITHUB_WORKSPACE/OGPGM"
           
-          # التأكد من وجود المجلد
           if [ ! -d "$PROJECT_DIR" ]; then
-            echo "❌ لم يتم العثور على مجلد OGPGM في المستودع"
-            ls -la "$GITHUB_WORKSPACE"
+            echo "❌ لم يتم العثور على مجلد OGPGM"
             exit 1
           fi
           
-          # تشغيل الخادم مع توجيهه مباشرة إلى مجلد OGPGM
-          # استخدام --dir (مدعوم في الإصدارات الحديثة) أو --cwd
-          opencode serve --port 4096 --hostname 0.0.0.0 --dir "$PROJECT_DIR" > opencode.log 2>&1 &
+          # الانتقال إلى مجلد المشروع
+          cd "$PROJECT_DIR"
+          
+          # تشغيل الخادم (بدون --dir)
+          opencode serve --port 4096 --hostname 0.0.0.0 > opencode.log 2>&1 &
           sleep 10
           
-          # التحقق من الحالة
           curl -f http://localhost:4096/global/health || (echo "OpenCode failed"; cat opencode.log; exit 1)
           echo "✅ OpenCode server is running on project: $PROJECT_DIR"
 
@@ -191,7 +189,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # إضافة كل التغييرات (بما في ذلك ملفات OGPGM المعدلة والمجلدات الجديدة)
           git add -A
           
           if ! git diff --cached --quiet; then
