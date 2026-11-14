@@ -1,4 +1,4 @@
-name: OpenCode Session (OGPGM Workspace)
+name: OpenCode Session (OGPGM Workspace - Fixed)
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   opencode-session:
-    runs-on: macos-latest
+    runs-on: macos-latest # ARM64 (Apple Silicon)
     timeout-minutes: 350
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
@@ -20,10 +20,18 @@ jobs:
         with:
           persist-credentials: true
 
+      # --- خيار التثبيت: استخدم npm إذا كان brew يفشل ---
       - name: Install OpenCode & Cloudflared
         run: |
-          brew install anomalyco/tap/opencode
-          brew install cloudflare/cloudflare/cloudflared
+          # جرب brew أولاً
+          brew install anomalyco/tap/opencode || brew install opencode
+          # إذا فشل brew، استخدم npm (أكثر استقراراً للإصدارات الحديثة)
+          if ! command -v opencode &> /dev/null; then
+            echo "Homebrew failed, trying npm..."
+            npm install -g opencode-ai@latest
+          fi
+          brew install cloudflare/cloudflare/cloudflared || brew install cloudflared
+          opencode --version
 
       - name: Restore OpenCode UI State
         run: |
@@ -40,27 +48,42 @@ jobs:
             done
           fi
 
-      # --- التعديل: استخدام cd للانتقال إلى مجلد OGPGM ---
-      - name: Start OpenCode Headless Server (OGPGM Project)
+      # --- بدء التشغيل مع تجربة طريقتين ---
+      - name: Start OpenCode Headless Server (Fallback Logic)
         env:
           OPENCODE_PERMISSION: '{"bash":"allow","edit":"allow","read":"allow","glob":"allow","grep":"allow","list":"allow","task":"allow","webfetch":"allow","websearch":"allow","lsp":"allow","skill":"allow","external_directory":"allow"}'
         run: |
           PROJECT_DIR="$GITHUB_WORKSPACE/OGPGM"
-          
           if [ ! -d "$PROJECT_DIR" ]; then
-            echo "❌ لم يتم العثور على مجلد OGPGM"
+            echo "❌ مجلد OGPGM غير موجود"
             exit 1
           fi
-          
-          # الانتقال إلى مجلد المشروع
           cd "$PROJECT_DIR"
-          
-          # تشغيل الخادم (بدون --dir)
+
+          # الطريقة 1: استخدام opencode serve
+          echo "Trying: opencode serve"
           opencode serve --port 4096 --hostname 0.0.0.0 > opencode.log 2>&1 &
+          SERVER_PID=$!
           sleep 10
-          
-          curl -f http://localhost:4096/global/health || (echo "OpenCode failed"; cat opencode.log; exit 1)
-          echo "✅ OpenCode server is running on project: $PROJECT_DIR"
+
+          if curl -f http://localhost:4096/global/health > /dev/null 2>&1; then
+            echo "✅ Server started with 'opencode serve'"
+          else
+            echo "⚠️ 'opencode serve' failed. Trying alternative: opencode --hostname"
+            kill $SERVER_PID 2>/dev/null || true
+            # الطريقة 2: استخدام الأمر المباشر (بناءً على توصية GitHub)
+            opencode --hostname 0.0.0.0 --port 4096 > opencode.log 2>&1 &
+            SERVER_PID=$!
+            sleep 10
+            if curl -f http://localhost:4096/global/health > /dev/null 2>&1; then
+              echo "✅ Server started with 'opencode --hostname'"
+            else
+              echo "❌ All methods failed. Server log:"
+              cat opencode.log
+              exit 1
+            fi
+          fi
+          echo "✅ OpenCode server is running on $PROJECT_DIR"
 
       - name: Generate Stop Page (Runtime Token Injection)
         env:
@@ -164,13 +187,11 @@ jobs:
           done
           echo "⏹️ Loop exited. Proceeding to save..."
 
-      # --- الحفظ الشامل: الجلسات + حالة الواجهة + تعديلات المشروع ---
       - name: Save All Sessions, UI State & Project Changes
         if: always()
         run: |
           mkdir -p opencode_state opencode_config
 
-          # 1. حفظ الجلسات
           if command -v opencode &> /dev/null; then
             SESSIONS=$(opencode session list --json 2>/dev/null | grep -o '"id":"[^"]*"' | cut -d'"' -f4 || true)
             if [ -n "$SESSIONS" ]; then
@@ -180,15 +201,12 @@ jobs:
             fi
           fi
 
-          # 2. حفظ حالة الواجهة
           if [ -d "$HOME/Library/Application Support/opencode" ]; then
             cp -R "$HOME/Library/Application Support/opencode/"* "opencode_config/" 2>/dev/null || true
           fi
 
-          # 3. حفظ تعديلات المشروع (OGPGM) في المستودع
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
           git add -A
           
           if ! git diff --cached --quiet; then
@@ -202,6 +220,6 @@ jobs:
       - name: Trigger Next Run (only if not cancelled)
         if: always() && job.status != 'cancelled'
         run: |
-          gh workflow run "OpenCode Session (OGPGM Workspace)" \
+          gh workflow run "OpenCode Session (OGPGM Workspace - Fixed)" \
             --ref ${{ github.ref }} \
             --repo ${{ github.repository }}
